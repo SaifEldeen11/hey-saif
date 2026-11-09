@@ -7,9 +7,9 @@
   <meta name="description" content="Saif builds backend systems, web apps, AI tools, automations, and electronics prototypes.">
   <title>Hey, I’m Saif.</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
   <script src="config.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </head>
 <body data-section="home">
   <a class="skip" href="#main">Skip to content</a>
@@ -36,7 +36,7 @@
         <p class="intro">I build backend systems and web apps, use generative AI and LLMs to automate tasks, and get hands-on with electronics.</p>
         <div class="actions">
           <a class="button primary" href="work.html" data-page>See my work <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
-          <button class="button booking" type="button">Book a meeting <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></button>
+          <a class="button booking" href="https://www.linkedin.com/in/saifeldeenahmed/">Book a meeting <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
         </div>
         <p class="terminal-line"><span aria-hidden="true">$</span> ./build-something-useful<span class="cursor" aria-hidden="true"></span></p>
       </div>
@@ -63,7 +63,7 @@
     <div><a href="https://github.com/SaifEldeen11">GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a href="https://www.linkedin.com/in/saifeldeenahmed/">LinkedIn <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
   </footer>
   <dialog id="booking-dialog" aria-labelledby="booking-title">
-    <button class="close-dialog" type="button" aria-label="Close booking dialog">×</button>
+    <form method="dialog"><button class="close-dialog" type="submit" aria-label="Close booking dialog">×</button></form>
     <p class="eyebrow">CONTACT / MEET SAIF</p>
     <h2 id="booking-title">Let’s find a time.</h2>
     <p>My booking calendar is being set up. Message me on LinkedIn and we’ll find a time that works.</p>

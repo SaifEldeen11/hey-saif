@@ -60,17 +60,18 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
 }
 
 const dialog = document.querySelector('#booking-dialog');
-for (const button of document.querySelectorAll('.booking')) {
-  button.addEventListener('click', () => {
-    const url = window.SAIF_CONFIG?.bookingUrl;
-    if (url && /^https:\/\/(calendly\.com|cal\.com)\//.test(url)) {
-      location.assign(url);
-    } else {
+const bookingUrl = window.SAIF_CONFIG?.bookingUrl;
+for (const link of document.querySelectorAll('.booking')) {
+  if (bookingUrl && /^https:\/\/(calendly\.com|cal\.com)\//.test(bookingUrl)) {
+    link.href = bookingUrl;
+  } else if (typeof dialog?.showModal === 'function') {
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       dialog.showModal();
-    }
-  });
+      event.preventDefault();
+    });
+  }
 }
-dialog.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
 
 document.querySelector('[data-replay]')?.addEventListener('click', () => {
   const demo = document.querySelector('.agent-demo');

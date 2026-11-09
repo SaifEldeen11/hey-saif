@@ -18,6 +18,8 @@
   --panel: #ecebdf;
   --mono: "Space Mono", monospace;
   color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 [data-theme="yellow"] {
   --paper: #fff;
@@ -42,7 +44,7 @@ h1, h2, p, figure { margin: 0; }
 h1, h2 { letter-spacing: -.065em; line-height: 1; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; }
-img { display: block; width: 100%; height: auto; }
+img { display: block; max-width: 100%; width: 100%; height: auto; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 [id] { scroll-margin-top: 24px; }
 .wrap { width: min(1110px, calc(100% - 72px)); margin-inline: auto; }
@@ -87,7 +89,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   align-items: center;
   justify-content: center;
   min-width: 48px;
-  min-height: 42px;
+  min-height: 44px;
   border: 0;
   background: var(--paper);
   font: 11px var(--mono);
@@ -136,7 +138,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .featured-photo { display: block; overflow: hidden; }
 .prototype { aspect-ratio: 1; object-fit: cover; object-position: 50% 24%; }
 .featured-photo img { transition: transform .35s ease; }
-.featured-photo:hover img { transform: scale(1.035); }
+@media (hover: hover) and (pointer: fine) {
+  .featured-photo:hover img { transform: scale(1.035); }
+}
 .feature-frame figcaption { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid var(--ink); padding: 11px 14px; }
 .feature-frame strong { display: block; font-size: 24px; letter-spacing: -.04em; line-height: 1.1; margin-top: 3px; }
 .feature-frame .eyebrow { font-size: 9px; }
@@ -211,6 +215,7 @@ body[data-section="about"] .page-intro .highlight { white-space: nowrap; }
 .footer a { display: inline-flex; align-items: center; gap: 3px; min-height: 44px; }
 .footer .icon { width: 12px; height: 12px; }
 dialog { background: var(--paper); color: var(--ink); width: min(495px, calc(100% - 36px)); padding: 29px; border: 1px solid var(--ink); box-shadow: 6px 6px var(--accent); }
+dialog:not([open]) { display: none; }
 dialog::backdrop { background: #0009; }
 dialog h2 { font-size: 42px; margin: 10px 0; }
 dialog .button { margin-top: 20px; }
@@ -218,16 +223,28 @@ dialog .button { margin-top: 20px; }
 
 @media (max-width: 750px) {
   .wrap { width: calc(100% - 36px); }
-  .mast { grid-template-columns: 1fr auto; gap: 0 8px; min-height: 0; }
+  .mast { grid-template-columns: minmax(0, 1fr) auto; gap: 0 8px; min-height: 0; }
   .wordmark, .palettes { margin-block: 8px; }
-  .mast nav { grid-row: 2; grid-column: 1 / -1; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); }
-  .mast nav a { padding-inline: 4px; font-size: 13px; }
-  .home-hero, .project-layout, .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 25px; }
+  .mast nav {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .mast nav a { justify-content: center; padding-inline: 3px; font-size: 14px; }
+  .mast nav [aria-current="page"] { background: var(--panel); }
+  .home-hero, .project-layout, .about-layout, .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 25px; }
   .home-hero { padding-block: 34px; }
   .home-hero h1 { font-size: clamp(66px, 15.4vw, 105px); margin-block: 12px 17px; }
   .home-hero h1 br { display: none; }
   .intro { font-size: 17px; }
-  .home-hero .actions .button { padding-inline: 11px; font-size: 13px; }
+  .home-hero .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-hero .actions .button { min-width: 0; padding-inline: 10px; gap: 6px; }
+  .contact-card .booking, dialog .button { width: 100%; }
+  dialog { max-height: calc(100vh - 36px); max-height: calc(100dvh - 36px); overflow: auto; }
+  dialog h2 { font-size: clamp(32px, 9vw, 42px); }
   .terminal-line { margin-top: 18px; }
   .feature-frame, .photo-frame, .project-visual, .contact-card { box-shadow: 3px 3px var(--ink); margin-right: 3px; }
   .feature-frame .prototype { aspect-ratio: 1.16; object-position: 50% 17%; }
@@ -238,6 +255,9 @@ dialog .button { margin-top: 20px; }
   .project { padding: 25px 0 34px; }
   .project-copy, .about-copy { padding-top: 0; }
   .contact-layout h1 { font-size: clamp(48px, 10vw, 78px); }
+}
+@media (max-width: 360px) {
+  .home-hero .actions { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
