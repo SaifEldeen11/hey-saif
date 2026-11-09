@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-theme="cream">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F4EB">
+  <meta name="description" content="Meet Saif, a backend developer, hands-on electronics builder, and swimmer.">
+  <title>About — Saif</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-section="about">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap mast">
+      <a class="wordmark" href="./" data-page aria-label="Saif, home">SAIF<span>.</span><small lang="ar" dir="rtl">سيف</small></a>
+      <nav aria-label="Main navigation">
+      <a href="./" data-page>Home</a>
+      <a href="work.html" data-page>Work</a>
+      <a href="about.html" data-page aria-current="page">About</a>
+      <a href="contact.html" data-page>Contact</a>
+      </nav>
+      <div class="palettes" role="group" aria-label="Color palette">
+        <button type="button" data-palette="cream" aria-pressed="true" aria-label="V1, cream and lime"><i></i>V1</button>
+        <button type="button" data-palette="yellow" aria-pressed="false" aria-label="V2, white and yellow"><i></i>V2</button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="wrap">
+      <header class="page-intro" id="about">
+        <p class="eyebrow">PERSONAL FILE / ABOUT</p>
+        <h1>A little <span class="highlight">about me.</span></h1>
+      </header>
+      <div class="about-layout">
+        <div class="about-copy">
+          <p class="lead">I’m Saif. I like figuring out how things work, then building my own version.</p>
+          <p>I spend most of my time on the backend of web apps. I also work with large language models and automation, and I like a project that gives me an excuse to pull out the Arduino.</p>
+          <p>Away from the keyboard, I’m usually swimming. Debugging my freestyle takes about as much patience as debugging my code.</p>
+          <div class="actions"><a class="button primary" href="work.html" data-page>See my work <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></div>
+        </div>
+        <figure class="photo-frame team-frame">
+          <div class="frame-bar"><span>FIG. 01 / TEAM PHOTO</span><span>CODEAVOUR 5.0</span></div>
+          <div class="photo-area">
+            <img src="codeavour-team.webp" width="1050" height="701" alt="Saif, in the middle, and his Codeavour teammates showing their medals">
+            <svg class="draw annotation" viewBox="0 0 600 400" aria-hidden="true"><path pathLength="1" d="M468 85 C410 52 350 49 298 68 M318 52 L298 68 L326 77"/></svg>
+            <span class="photo-label">THAT’S ME</span>
+          </div>
+          <figcaption>With my teammates at Codeavour 5.0. I’m the one in the middle.</figcaption>
+        </figure>
+      </div>
+      <section class="about-index" aria-labelledby="interests-title">
+        <p class="eyebrow" id="interests-title">WHAT I LIKE TO BUILD</p>
+        <div class="index-links">
+          <a href="work.html#backend" data-page><span class="eyebrow">01 / SOFTWARE</span><strong>Backend & web apps <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></strong></a>
+          <a href="work.html#ai" data-page><span class="eyebrow">02 / AI</span><strong>LLMs & automation <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></strong></a>
+          <a href="work.html#smart-hotel" data-page><span class="eyebrow">03 / HARDWARE</span><strong>Electronics prototypes <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></strong></a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="wrap footer">
+    <span>SAIF / PERSONAL PORTFOLIO</span>
+    <div><a href="https://github.com/SaifEldeen11">GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a href="https://www.linkedin.com/in/saifeldeenahmed/">LinkedIn <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
+  </footer>
+  <dialog id="booking-dialog" aria-labelledby="booking-title">
+    <button class="close-dialog" type="button" aria-label="Close booking dialog">×</button>
+    <p class="eyebrow">CONTACT / MEET SAIF</p>
+    <h2 id="booking-title">Let’s find a time.</h2>
+    <p>My booking calendar is being set up. Message me on LinkedIn and we’ll find a time that works.</p>
+    <a class="button primary" href="https://www.linkedin.com/in/saifeldeenahmed/">Message me on LinkedIn <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" data-theme="cream">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F4EB">
+  <meta name="description" content="Explore Saif’s Smart Hotel, .NET e-commerce backend, and LLM résumé agent.">
+  <title>Selected work — Saif</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-section="work">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap mast">
+      <a class="wordmark" href="./" data-page aria-label="Saif, home">SAIF<span>.</span><small lang="ar" dir="rtl">سيف</small></a>
+      <nav aria-label="Main navigation">
+      <a href="./" data-page>Home</a>
+      <a href="work.html" data-page aria-current="page">Work</a>
+      <a href="about.html" data-page>About</a>
+      <a href="contact.html" data-page>Contact</a>
+      </nav>
+      <div class="palettes" role="group" aria-label="Color palette">
+        <button type="button" data-palette="cream" aria-pressed="true" aria-label="V1, cream and lime"><i></i>V1</button>
+        <button type="button" data-palette="yellow" aria-pressed="false" aria-label="V2, white and yellow"><i></i>V2</button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="wrap">
+      <header class="page-intro" id="work">
+        <p class="eyebrow">FIELD NOTES / PROJECT INDEX</p>
+        <h1>Selected <span class="highlight">work.</span></h1>
+        <p class="intro">Three builds, from an Arduino wired into a model hotel to an LLM that helps people revise their résumés.</p>
+        <nav class="jump-links" aria-label="Projects">
+          <a href="#smart-hotel">01 Smart Hotel</a>
+          <a href="#backend">02 E-commerce API</a>
+          <a href="#ai">03 Résumé agent</a>
+        </nav>
+      </header>
+
+      <article class="project" id="smart-hotel">
+        <header class="project-head"><span class="project-number" aria-hidden="true">01</span><div><p class="eyebrow">ELECTRONICS / TEAM PROJECT</p><h2>Smart Hotel</h2></div></header>
+        <div class="project-layout">
+          <figure class="photo-frame">
+            <div class="frame-bar"><span>FIG. 01 / PROTOTYPE</span><span>ARDUINO</span></div>
+            <div class="photo-area">
+              <img src="smart-hotel-build.webp" width="675" height="900" alt="Saif testing the miniature Smart Hotel prototype" class="prototype">
+              <svg class="draw annotation hotel-arrow" viewBox="0 0 400 400" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M333 225 C320 273 283 293 229 304 M249 286 L229 304 L257 311"/></svg>
+              <span class="photo-label">TESTING THE MODEL</span>
+            </div>
+            <figcaption>Testing the model during assembly.</figcaption>
+          </figure>
+          <div class="project-copy">
+            <p class="lead">We wired and programmed a miniature hotel.</p>
+            <p>Our Arduino read water, gas, and distance sensors and listened for commands from a phone. Building it taught me to debug the wiring and the code together.</p>
+            <div class="award"><strong>1st place</strong><span>Codeavour 5.0 · 15+ electronics category<br>Qualified for the international round in Dubai.</span></div>
+            <details class="build-notes">
+              <summary>See the build photos</summary>
+              <div class="gallery">
+                <figure><a href="smart-hotel-code.webp"><img src="smart-hotel-code.webp" width="675" height="900" alt="The Arduino sketch used to read the hotel sensors" loading="lazy"></a><figcaption>Arduino sketch</figcaption></figure>
+                <figure><a href="codeavour-trophy.webp"><img src="codeavour-trophy.webp" width="675" height="900" alt="The trophy from Codeavour 5.0" loading="lazy"></a><figcaption>Codeavour trophy</figcaption></figure>
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" id="backend">
+        <header class="project-head"><span class="project-number" aria-hidden="true">02</span><div><p class="eyebrow">BACKEND / .NET</p><h2>E-commerce API</h2></div></header>
+        <div class="project-layout">
+          <div class="project-visual">
+            <div class="frame-bar"><span>FIG. 02 / ORDER FLOW</span><span>WORKFLOW</span></div>
+            <ol class="order-flow">
+              <li><span>01</span><strong>Browse products</strong></li>
+              <li><span>02</span><strong>Build a basket</strong></li>
+              <li><span>03</span><strong>Place an order</strong></li>
+            </ol>
+          </div>
+          <div class="project-copy">
+            <p class="lead">The backend behind the “Place order” button.</p>
+            <p>I built a .NET API that manages products, customer accounts, baskets, and orders. Separating the responsibilities made it easier to change one part of the app without rewriting the rest.</p>
+            <a class="text-link" href="https://github.com/SaifEldeen11/E-CommerceApp__Solution">Explore the code <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" id="ai">
+        <header class="project-head"><span class="project-number" aria-hidden="true">03</span><div><p class="eyebrow">GENERATIVE AI / LLMS</p><h2>Résumé agent</h2></div></header>
+        <div class="project-layout">
+          <div class="project-visual agent-demo">
+            <div class="frame-bar"><span>FIG. 03 / SAMPLE REVISION</span><span>EXAMPLE</span></div>
+            <div class="sample">
+              <p class="eyebrow">ORIGINAL</p>
+              <p>“Worked on a website backend.”</p>
+              <p class="eyebrow">REVISED</p>
+              <p class="revision">“Built backend features for a web application.”</p>
+              <button class="text-link" type="button" data-replay>Replay revision <span aria-hidden="true">↻</span></button>
+            </div>
+          </div>
+          <div class="project-copy">
+            <p class="lead">A second pair of eyes for your CV.</p>
+            <p>The agent reads a PDF or image, uses an LLM to revise the wording according to your instructions, and lets you compare the changes with the original.</p>
+            <a class="text-link" href="https://github.com/SaifEldeen11/resume-improvement-agent">Explore the project <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="extra-links" aria-label="More projects">
+        <p class="eyebrow">ALSO ON MY WORKBENCH</p>
+        <a class="text-link" href="https://github.com/SaifEldeen11/ISwim-Academy_Solution">Swimming Academy backend <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+        <a class="text-link" href="https://github.com/SaifEldeen11?tab=repositories">All repositories <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+      </aside>
+      <div class="next-page"><p>Have a project in mind?</p><a class="button primary" href="contact.html" data-page>Let’s talk <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></div>
+    </div>
+  </main>
+  <footer class="wrap footer">
+    <span>SAIF / PERSONAL PORTFOLIO</span>
+    <div><a href="https://github.com/SaifEldeen11">GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a href="https://www.linkedin.com/in/saifeldeenahmed/">LinkedIn <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
+  </footer>
+  <dialog id="booking-dialog" aria-labelledby="booking-title">
+    <button class="close-dialog" type="button" aria-label="Close booking dialog">×</button>
+    <p class="eyebrow">CONTACT / MEET SAIF</p>
+    <h2 id="booking-title">Let’s find a time.</h2>
+    <p>My booking calendar is being set up. Message me on LinkedIn and we’ll find a time that works.</p>
+    <a class="button primary" href="https://www.linkedin.com/in/saifeldeenahmed/">Message me on LinkedIn <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
+  </dialog>
+</body>
+</html>

@@ -1,22 +1,80 @@
 'use strict';
-document.documentElement.classList.add('js');
-const palettes = document.querySelectorAll('[data-palette]');
-function setPalette(theme, updateUrl = true) {
-  theme = theme === 'yellow' ? 'yellow' : 'cream';
+
+const params = new URLSearchParams(location.search);
+const paletteButtons = document.querySelectorAll('[data-palette]');
+const pageLinks = document.querySelectorAll('[data-page]');
+
+function applyPalette(theme) {
   document.documentElement.dataset.theme = theme;
-  palettes.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.palette === theme)));
-  document.querySelector('meta[name="theme-color"]').content = theme === 'yellow' ? '#FFFFFF' : '#F5F4EB';
-  if (updateUrl) { const url = new URL(location.href); url.searchParams.set('theme', theme); history.replaceState({}, '', url); }
+  document.querySelector('meta[name="theme-color"]').content =
+    theme === 'yellow' ? '#FFFFFF' : '#F5F4EB';
+
+  for (const button of paletteButtons) {
+    button.setAttribute('aria-pressed', String(button.dataset.palette === theme));
+  }
+  for (const link of pageLinks) {
+    const url = new URL(link.href);
+    url.searchParams.set('theme', theme);
+    link.href = url.href;
+  }
 }
-setPalette(new URLSearchParams(location.search).get('theme'), false);
-palettes.forEach(button => button.addEventListener('click', () => setPalette(button.dataset.palette)));
-const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) {entry.target.classList.add('active'); observer.unobserve(entry.target);} }), {threshold: .2});
-document.querySelectorAll('.draw').forEach(arrow => observer.observe(arrow));
-const galleryButton = document.querySelector('[data-gallery]');
-galleryButton.setAttribute('aria-expanded', 'false');
-galleryButton.addEventListener('click', () => {const notes = document.querySelector('.build-notes');notes.hidden = !notes.hidden;galleryButton.setAttribute('aria-expanded', String(!notes.hidden));galleryButton.innerHTML = notes.hidden ? 'See the build notes <span aria-hidden="true">↗</span>' : 'Close the build notes <span aria-hidden="true">−</span>';});
+
+applyPalette(params.get('theme') === 'yellow' ? 'yellow' : 'cream');
+for (const button of paletteButtons) {
+  button.addEventListener('click', () => {
+    const theme = button.dataset.palette;
+    const url = new URL(location.href);
+    url.searchParams.set('theme', theme);
+    history.replaceState(null, '', url);
+    applyPalette(theme);
+  });
+}
+
+// Preserve the links shared before the portfolio was split into pages.
+if (document.body.dataset.section === 'home') {
+  const legacyPages = new Map([
+    ['#work', 'work.html'],
+    ['#smart-hotel', 'work.html'],
+    ['#backend', 'work.html'],
+    ['#ai', 'work.html'],
+    ['#about', 'about.html'],
+    ['#contact', 'contact.html'],
+  ]);
+  const page = legacyPages.get(location.hash);
+  if (page) location.replace(page + location.search + location.hash);
+}
+
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.replace('pending', 'active');
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: .18 });
+
+  for (const drawing of document.querySelectorAll('.draw')) {
+    drawing.classList.add('pending');
+    observer.observe(drawing);
+  }
+}
+
 const dialog = document.querySelector('#booking-dialog');
-document.querySelectorAll('.booking').forEach(button => button.addEventListener('click', () => {const url = window.SAIF_CONFIG?.bookingUrl; if (url && /^https:\/\/(calendly\.com|cal\.com)\//.test(url)) {location.assign(url);} else {dialog.showModal();}}));
-document.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => { if (event.target === dialog) {const r=dialog.getBoundingClientRect(); if(event.clientX<r.left || event.clientX>r.right || event.clientY<r.top || event.clientY>r.bottom) dialog.close();}});
-document.querySelector('.run-example').addEventListener('click', () => {const demo = document.querySelector('.agent-demo');demo.classList.remove('replaying');void demo.offsetWidth;demo.classList.add('replaying');});
+for (const button of document.querySelectorAll('.booking')) {
+  button.addEventListener('click', () => {
+    const url = window.SAIF_CONFIG?.bookingUrl;
+    if (url && /^https:\/\/(calendly\.com|cal\.com)\//.test(url)) {
+      location.assign(url);
+    } else {
+      dialog.showModal();
+    }
+  });
+}
+dialog.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
+
+document.querySelector('[data-replay]')?.addEventListener('click', () => {
+  const demo = document.querySelector('.agent-demo');
+  demo.classList.remove('replaying');
+  void demo.offsetWidth;
+  demo.classList.add('replaying');
+});
